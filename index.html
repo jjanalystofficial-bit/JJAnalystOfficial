@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +17,38 @@
       line-height: 1.6;
     }
 
-    header {
-      background: #1f2937;
+    /* 🎥 VIDEO HEADER */
+    .video-header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
       color: #fff;
-      padding: 50px 20px;
       text-align: center;
+    }
+
+    .video-header video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .video-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .video-header .content {
+      position: relative;
+      z-index: 1;
+      padding: 50px 20px;
     }
 
     .profile-img {
@@ -31,21 +60,24 @@
       margin-bottom: 15px;
     }
 
-    header h1 {
+    .video-header h1 {
       margin: 10px 0 0;
       font-size: 2.4rem;
     }
 
-    header p {
+    .video-header p {
       margin-top: 8px;
       font-size: 1.1rem;
       color: #d1d5db;
     }
 
+    /* NAVIGATION */
     nav {
       background: #111827;
       padding: 12px 0;
       text-align: center;
+      position: relative;
+      z-index: 10;
     }
 
     nav a {
@@ -59,6 +91,7 @@
       color: #38bdf8;
     }
 
+    /* SECTIONS */
     section {
       max-width: 1000px;
       margin: 50px auto;
@@ -90,6 +123,7 @@
       color: #1f2937;
     }
 
+    /* FOOTER */
     footer {
       background: #1f2937;
       color: #d1d5db;
@@ -103,183 +137,124 @@
       color: #38bdf8;
       text-decoration: none;
     }
+
+    /* 📱 MOBILE FALLBACK */
+    @media (max-width: 768px) {
+      .video-header video {
+        display: none;
+      }
+
+      .video-header {
+        background: url("background.jpg") center / cover no-repeat;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <header>
+<header class="video-header">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="background.mp4" type="video/mp4">
+  </video>
+
+  <div class="content">
     <img src="profile.png" alt="JJ Analyst Profile Picture" class="profile-img" />
     <h1>John Joseph Otordos</h1>
     <p>Data & Report Analyst | Excel Automation & Reporting Specialist</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a detail-oriented <strong>Data & Report Analyst</strong> with strong expertise in Microsoft Excel.
-      I help beginners, business users, and professionals turn raw data into
-      accurate, automated, and easy-to-understand reports.
-    </p>
-  </section>
-
-  <section id="skills">
-    <h2>Core Skills</h2>
-    <div class="skills">
-      <div class="card">
-        <h3>Microsoft Excel</h3>
-        <ul>
-          <li>Advanced Formulas (VBA, VLOOKUP, XLOOKUP, INDEX-MATCH)</li>
-          <li>Pivot Tables & Dashboards</li>
-          <li>Conditional Formatting</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Data Handling</h3>
-        <ul>
-          <li>Data Cleaning & Validation</li>
-          <li>Data Manipulation</li>
-          <li>Large Dataset Management</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Reporting & Automation</h3>
-        <ul>
-          <li>Automated Excel Reports</li>
-          <li>Reusable Templates</li>
-          <li>Process Optimization</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Sample Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>Sales Performance Dashboard</h3>
-        <p>
-          Automated Excel dashboard to track KPIs, monthly sales,
-          and business trends using Pivot Tables.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Data Cleaning & Standardization</h3>
-        <p>
-          Cleaned raw datasets by removing duplicates, correcting errors,
-          and structuring data for reporting.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Automated Reporting Template</h3>
-        <p>
-          Built reusable Excel templates that auto-update reports,
-          saving hours of manual work.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-   <!-- 🔽 DOWNLOAD SECTION -->
-<section id="downloads">
-  <h2>Free Excel Files</h2>
-
-  <!-- DOWNLOAD ITEM 1 -->
-  <div class="card">
-    <h3>Practice Basic Excel</h3>
-    <p>
-      Beginner-friendly Excel file to practice formulas, formatting,
-      and basic data analysis.
-    </p>
-
-    <a
-      href="Practice-Basic-Excel.xlsx"
-      download
-      class="download-btn">
-      📥 Download Excel File
-    </a>
   </div>
+</header>
 
-  <!-- DOWNLOAD ITEM 2 -->
-  <div class="card">
-    <h3>Automated Employee Attendance</h3>
-    <p>
-      Easily track employee presence, absences, late arrivals,
-      and working hours on a daily or monthly basis.
-    </p>
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-    <a
-      href="Automated-Employee-Attendance-Excel.xlsx"
-      download
-      class="download-btn">
-      📥 Download Excel File
-    </a>
-  </div>
-
-  <!-- DOWNLOAD ITEM 3 -->
-  <div class="card">
-    <h3>Party Planner and Checklist</h3>
-    <p>
-      Practical tool used to organize and manage all the details
-      of an event in one place.
-    </p>
-
-    <a
-      href="Party-planner-and-checklist-Excel.xlsx"
-      download
-      class="download-btn">
-      📥 Download Excel File
-    </a>
-  </div>
-
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am a detail-oriented <strong>Data & Report Analyst</strong> with strong expertise in Microsoft Excel.
+    I help beginners, business users, and professionals turn raw data into
+    accurate, automated, and easy-to-understand reports.
+  </p>
 </section>
-<!-- END DOWNLOAD SECTION -->
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <strong>JJAnalystOfficial@gmail.com</strong></p>
+<section id="skills">
+  <h2>Core Skills</h2>
+  <div class="skills">
+    <div class="card">
+      <h3>Microsoft Excel</h3>
+      <ul>
+        <li>Advanced Formulas (VBA, XLOOKUP, INDEX-MATCH)</li>
+        <li>Pivot Tables & Dashboards</li>
+        <li>Conditional Formatting</li>
+      </ul>
+    </div>
 
-    <p>
-      Linkedin:
-      <a href="https://www.linkedin.com/in/john-joseph-otordos-948894221" target="_blank">
-        Linkedin.com/JohnJosephO.
-      </a>
-    </p>
+    <div class="card">
+      <h3>Data Handling</h3>
+      <ul>
+        <li>Data Cleaning & Validation</li>
+        <li>Data Manipulation</li>
+        <li>Large Dataset Management</li>
+      </ul>
+    </div>
 
-    <p>
-      Facebook:
-      <a href="https://www.Facebook.com/share/17gaiNFSrQ/?mibextid=wwXIfr" target="_blank">
-        Facebook.com/JJAnalyst
-      </a>
-    </p>
-    
-    <p>
-      YouTube:
-      <a href="http://www.Youtube.com/@JJAnalyst-e8z" target="_blank">
-        Youtube.com/@JJAnalyst
-      </a>
-    </p>
-  </section>
-  
+    <div class="card">
+      <h3>Reporting & Automation</h3>
+      <ul>
+        <li>Automated Excel Reports</li>
+        <li>Reusable Templates</li>
+        <li>Process Optimization</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2026 JJ Analyst | Data & Report Analyst</p>
-  </footer>
+<section id="projects">
+  <h2>Sample Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>Sales Performance Dashboard</h3>
+      <p>Automated Excel dashboard tracking KPIs and sales trends.</p>
+    </div>
+
+    <div class="card">
+      <h3>Data Cleaning & Standardization</h3>
+      <p>Structured raw datasets for accurate reporting.</p>
+    </div>
+
+    <div class="card">
+      <h3>Automated Reporting Template</h3>
+      <p>Reusable templates saving hours of manual work.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <strong>JJAnalystOfficial@gmail.com</strong></p>
+
+  <p>
+    LinkedIn:
+    <a href="https://www.linkedin.com/in/john-joseph-otordos-948894221" target="_blank">
+      Linkedin.com/JohnJosephO
+    </a>
+  </p>
+
+  <p>
+    YouTube:
+    <a href="http://www.youtube.com/@JJAnalyst-e8z" target="_blank">
+      Youtube.com/@JJAnalyst
+    </a>
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 JJ Analyst | Data & Report Analyst</p>
+</footer>
 
 </body>
-
 </html>
-
-
-
