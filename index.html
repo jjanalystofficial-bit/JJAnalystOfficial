@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JJ Analyst | Data & Report Analyst Portfolio</title>
 
-  <!-- ✅ FAVICON -->
+  <!-- FAVICON -->
   <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
@@ -17,24 +17,26 @@
       line-height: 1.6;
     }
 
-    /* 🎥 VIDEO HEADER */
+    /* ===== VIDEO HEADER ===== */
     .video-header {
       position: relative;
-      height: 100vh;
+      height: 65vh;
+      min-height: 420px;
       overflow: hidden;
       color: #fff;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .video-header video {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      z-index: -1;
+      z-index: -2;
     }
 
     .video-header::after {
@@ -42,13 +44,12 @@
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
+      z-index: -1;
     }
 
     .video-header .content {
-      position: relative;
-      z-index: 1;
-      padding: 50px 20px;
+      padding: 20px;
+      max-width: 800px;
     }
 
     .profile-img {
@@ -71,13 +72,11 @@
       color: #d1d5db;
     }
 
-    /* NAVIGATION */
+    /* ===== NAVIGATION ===== */
     nav {
       background: #111827;
-      padding: 12px 0;
+      padding: 14px 0;
       text-align: center;
-      position: relative;
-      z-index: 10;
     }
 
     nav a {
@@ -91,7 +90,7 @@
       color: #38bdf8;
     }
 
-    /* SECTIONS */
+    /* ===== SECTIONS ===== */
     section {
       max-width: 1000px;
       margin: 50px auto;
@@ -123,7 +122,7 @@
       color: #1f2937;
     }
 
-    /* FOOTER */
+    /* ===== FOOTER ===== */
     footer {
       background: #1f2937;
       color: #d1d5db;
@@ -138,14 +137,19 @@
       text-decoration: none;
     }
 
-    /* 📱 MOBILE FALLBACK */
+    /* ===== MOBILE FALLBACK ===== */
     @media (max-width: 768px) {
+      .video-header {
+        height: 360px;
+        background: url("background.jpg") center / cover no-repeat;
+      }
+
       .video-header video {
         display: none;
       }
 
-      .video-header {
-        background: url("background.jpg") center / cover no-repeat;
+      .video-header h1 {
+        font-size: 1.9rem;
       }
     }
   </style>
@@ -159,7 +163,7 @@
   </video>
 
   <div class="content">
-    <img src="profile.png" alt="JJ Analyst Profile Picture" class="profile-img" />
+    <img src="profile.png" alt="JJ Analyst Profile Picture" class="profile-img">
     <h1>John Joseph Otordos</h1>
     <p>Data & Report Analyst | Excel Automation & Reporting Specialist</p>
   </div>
