@@ -6,7 +6,7 @@
 }
 
 :root {
-    --primary-color: #38bdf8;
+    --primary-color: #38bdf8;        /* Light blue - para portfolio */
     --primary-dark: #0ea5e9;
     --secondary-color: #6c757d;
     --success-color: #10b981;
@@ -42,14 +42,19 @@ section {
     padding: 0 20px;
 }
 
-section h2 {
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-dark);
     border-bottom: 3px solid var(--primary-color);
     display: inline-block;
     padding-bottom: 5px;
-    margin-bottom: 25px;
+    width: auto;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER (PARA SA PORTFOLIO) ===== */
 .site-header {
     background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
     color: #fff;
@@ -77,7 +82,7 @@ section h2 {
     color: var(--text-white);
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== NAVIGATION (COMMON) ===== */
 .navbar {
     background: var(--dark-bg);
     padding: 12px 0;
@@ -134,24 +139,41 @@ section h2 {
     transition: var(--transition);
 }
 
-/* ===== CARD GRIDS ===== */
-.skills-grid, .projects-grid {
+/* ===== PORTFOLIO SPECIFIC STYLES ===== */
+
+/* Skills & Projects Grids */
+.skills-grid, .projects-grid, .downloads-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    margin-top: 20px;
 }
 
+/* Cards */
 .card {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .card h3 {
     margin-top: 0;
-    color: var(--text-dark);
     margin-bottom: 15px;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card h3 i {
+    color: var(--primary-color);
 }
 
 .card ul {
@@ -173,13 +195,7 @@ section h2 {
     left: 0;
 }
 
-/* ===== DOWNLOADS ===== */
-.downloads-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
+/* Downloads Section */
 .downloads-grid .card {
     text-align: center;
 }
@@ -187,16 +203,20 @@ section h2 {
 .downloads-grid a {
     display: inline-block;
     margin-top: 10px;
-    color: var(--primary-color);
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    border-radius: 4px;
+    transition: var(--transition);
 }
 
 .downloads-grid a:hover {
-    text-decoration: underline;
+    background: var(--primary-dark);
+    transform: scale(1.05);
 }
 
-/* ===== CONTACT ===== */
+/* Contact Section */
 .contact-info {
     background: #fff;
     padding: 30px;
@@ -206,6 +226,15 @@ section h2 {
 
 .contact-info p {
     margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-info i {
+    color: var(--primary-color);
+    width: 20px;
+    font-size: 1.2rem;
 }
 
 .contact-info a {
@@ -218,6 +247,128 @@ section h2 {
 }
 
 /* ===== ROADMAP SPECIFIC STYLES ===== */
+
+/* Hero Section (for roadmap page) */
+.hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-subtitle {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: inline-block;
+    background: rgba(56,189,248,0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.highlight {
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: rgba(56,189,248,0.2);
+    z-index: -1;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.hero-stat-item {
+    text-align: center;
+}
+
+.hero-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+}
+
+.hero-stat-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(56,189,248,0.3);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.map-illustration {
+    font-size: 15rem;
+    color: var(--primary-color);
+    text-align: center;
+    opacity: 0.8;
+}
 
 /* Progress Section */
 .progress-section {
@@ -342,6 +493,10 @@ section h2 {
     gap: 8px;
 }
 
+.category-group h4 i {
+    font-size: 1.2rem;
+}
+
 .milestone-item {
     margin: 10px 0;
     display: flex;
@@ -375,6 +530,7 @@ section h2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+    margin-top: 40px;
 }
 
 .resource-card {
@@ -421,7 +577,26 @@ section h2 {
     text-decoration: none;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .progress-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -444,6 +619,15 @@ section h2 {
         left: 0;
     }
     
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
     .progress-cards {
         grid-template-columns: 1fr;
     }
@@ -457,17 +641,25 @@ section h2 {
         grid-template-columns: 1fr;
     }
     
-    .resources-grid {
+    .contact-info {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
-    .site-header h1 {
+    .hero-title {
         font-size: 2rem;
     }
     
     .section-title {
         font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+    }
+    
+    .map-illustration {
+        font-size: 10rem;
     }
 }
